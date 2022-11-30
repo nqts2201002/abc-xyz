@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <style>
+        table { 
+            margin-top: 50px;
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 30px;
+        }
+       th:hover ,td:hover{
+        background-color: rgb(115, 53, 187);
+       }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="myApp" ng-controller="formCtrl">
+    <h1>Form(không biết gì thì cứ bỏ trống , cho vào cái mình cần thôi :V):</h1>
+    <div>
+        còn thiếu thuộc tính rel nữa , nhưng chắc không quan trọng :V
+    <table>
+        <tr>
+            <td width="25%">
+               <b> accept-charset(bỗj mã kí tự từ ít -> nhiều):</b>
+            </td>
+            <td>
+                <input type="radio" ng-model="a"value='accept-charset="ASCII"'>ASCII
+            </td>
+            <td>
+                <input type="radio" ng-model="a"  value='accept-charset="ANSI"'>ANSI
+            </td>
+            <td>
+                <input type="radio" ng-model="a"value='accept-charset="8859-1"'>8859-1
+            </td>
+            <td>
+                <input type="radio" ng-model="a"  value='accept-charset="UTF-8"' >UTF-8
+            </td>
+
+        </tr>
+        <tr>
+            <th>file xử lí(thường là các file đuôi .asp .php viết bằng ngôn ngữ đó):</th>
+            <td><input type="text" ng-model="b" name="b" placeholder="enter file or url link to file"></td>
+        </tr>
+        <tr>
+            <th>autocomplete(tự động hoàn thành):</th>
+            <td> <input type="radio" ng-model="c"  value='autocomplete="on"'>on</td>
+            <td> <input type="radio" ng-model="c"  value='autocomplete="off"'>off</td>
+        </tr>
+        <tr>
+            <th>enctype(dữ liệu mã hóa khi gửi , chỉ áp dụng cho method="post"):</th>
+            <td> <input type="radio" ng-model="d"  value='enctype="application/x-www-form-urlencoded"'>mặc định , có mã hóa</td>
+            <td> <input type="radio" ng-model="d" value='enctype="multipart/form-data"' > mã hóa áp dụng cho tệp , ảnh</td>
+            <td> <input type="radio" ng-model="d" value='enctype="text/plain"' > không mã hóa</td>
+        </tr>
+        <tr>
+            <th>method(phương thức truyền dữ liệu):</th>
+            <td><input type="radio" ng-model="e" value='method="get"'>mặc định (không truyền)</td>
+            <td><input type="radio" ng-model="e" value='method="post"'>data truyền ra ngoài</td>
+        </tr>
+        <tr>
+            <th>name(để element gọi tên ):</th>
+            <td><input type="text" ng-model="f"></td>
+        </tr>
+        <tr>
+            <th>novalidate(không được xác thực khi gửi):</th>
+            <td><input type="radio" ng-model="g" value=''>có xác thực(mặc định)</td>
+            <td><input type="radio" ng-model="g" value='novalidate'>không xác thực</td>
+        </tr>
+        <tr>
+            <th>target(nơi phản hồi của form sau khi gửi):</th>
+           
+            <td><input type="radio" ng-model="h" value='target="_self"'>phản hồi ở trang này(mặc định)</td>
+            <td><input type="radio" ng-model="h" value='target="_blank"'>phản hồi ở trang khác</td>
+            <td><input type="radio" ng-model="h" value='target="_parent"'>phản hồi ở khung chính</td>
+            <td><input type="radio" ng-model="h" value='target="_top"'>phản hồi trong toàn bộ cửa sổ</td>
+            <td><input type="radio" ng-model="h" value='target="enter_iframe"'>phản hồi ở khung iframe</td>
+        </tr>
+    </table>
+<hr>
+<h3>copy code ở dưới:</h3>
+    
+    <p>{{ first }}{{ a }} action="{{ b }}" {{ c }}{{ d }} {{ e }} name="{{ f }}" {{ g }}{{ h }}{{ last }}</p>
+    <p>{{ end }}</p>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('formCtrl', function($scope) {
+        $scope.first = '<form';
+        $scope.last ='>';
+        $scope.end='</form>';
+    });
+    </script>
+</body>
+</html>
